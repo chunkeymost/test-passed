@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UAT Dashboard – GSS Enterprise</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>UAT Dashboard – <span id="appName"></span></h1>
+      <div class="sub" id="updated"></div>
+    </div>
+    <div class="actions">
+      <button class="btn" id="theme">Tema</button>
+      <button class="btn" id="exportCsv">Export CSV</button>
+      <button class="btn" id="exportJson">Export data.js</button>
+      <button class="btn" id="reset">Reset perubahan</button>
+    </div>
+  </header>
+
+  <section class="grid kpis" id="kpis"></section>
+
+  <section class="card">
+    <h2>Progres Eksekusi <span class="sub" id="progressText"></span></h2>
+    <div class="bar" id="mainBar"></div>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <section class="grid two">
+    <div class="card">
+      <h2>Distribusi Status</h2>
+      <div class="donut-wrap">
+        <div class="donut" id="donut"><b id="donutLabel"></b></div>
+        <div class="legend" id="donutLegend" style="flex-direction:column"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Bug / Defect</h2>
+      <div class="bugs" id="bugs"></div>
+    </div>
+  </section>
+
+  <section class="grid two two-equal">
+    <div class="card"><h2>Per Module</h2><div class="rows" id="byModule"></div></div>
+    <div class="card"><h2>Per Prioritas</h2><div class="rows" id="byPriority"></div></div>
+  </section>
+
+  <section class="card">
+    <h2>Daftar Test Case</h2>
+    <div class="toolbar">
+      <input id="q" placeholder="Cari ID, fitur, skenario…">
+      <select id="fModule"></select>
+      <select id="fStatus"></select>
+      <select id="fPriority"></select>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>ID</th><th>Module</th><th>Fitur</th><th>Skenario</th><th>Tipe</th><th>Prioritas</th><th>Status</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div class="hint">Klik baris untuk melihat langkah, expected result, dan mengubah status. Perubahan tersimpan di browser (localStorage); gunakan “Export data.js” untuk menjadikannya permanen.</div>
+  </section>
+</div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
